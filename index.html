@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Recipe page</title>
+
+    <style>
+      :root {
+        --White: hsl(0, 0%, 100%);
+
+        --Stone-100: hsl(30, 54%, 90%);
+        --Stone-150: hsl(30, 18%, 87%);
+        --Stone-600: hsl(30, 10%, 34%);
+        --Stone-900: hsl(24, 5%, 18%);
+
+        --Brown-800: hsl(14, 45%, 36%);
+        
+        --Rose-800: hsl(332, 51%, 32%);
+        --Rose-50: hsl(330, 100%, 98%);
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      @font-face {
+        font-family: "YoungSerif";
+        src: url("./assets/fonts/young-serif/YoungSerif-Regular.ttf")
+        format("truetype");
+      }
+      
+      @font-face {
+        font-family: "Outfit-Black";
+        src: url("./assets/fonts/outfit/static/Outfit-Black.ttf")
+        format("truetype");
+      }
+      @font-face {
+        font-family: "Outfit-Light";
+        src: url("./assets/fonts/outfit/static/Outfit-Light.ttf")
+        format("truetype");
+      }
+      
+      @font-face {
+        font-family: "Outfit-Regular";  
+        src: url("./assets/fonts/outfit/static/Outfit-Regular.ttf")
+        format("truetype");
+      }
+      
+      @font-face {
+        font-family: "Outfit-Medium";
+        src: url("./assets/fonts/outfit/static/Outfit-Medium.ttf")
+        format("truetype");
+      }
+      
+      @font-face {
+        font-family: "Outfit-SemiBold";
+        src: url("./assets/fonts/outfit/static/Outfit-SemiBold.ttf")
+        format("truetype");
+      }
+      
+      body {
+        background-color: var(--Stone-100);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        padding: 5%;
+      }
+      
+      .container {
+        background-color: var(--White);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        justify-content: space-between;
+        align-items: center;
+        width: 60%;
+        border-radius: 16px;
+      }
+
+
+      
+      ol, ul {
+        list-style-position: outside;
+        padding-left: 1.5em;
+        line-height: 30px;
+      }
+
+      li {
+        padding-bottom: 5px;
+        padding-left: 1.5em;
+      }
+      hr {
+        border: none; /* Removes default styling */
+        height: 1px; /* Adjust thickness */
+        background-color: var(--Stone-150); /* Change color */
+        margin: 20px 0; /* Add spacing */
+        width: 100%;
+    }
+
+      .container > .small-screen-padding > h1 {
+        font-family: "YoungSerif";
+        font-weight: 400;
+        color: var(--Stone-900);
+        padding-top: 20px;
+        padding-bottom: 10px;
+      }
+
+      .container > .small-screen-padding > p {
+        font-family: "Outfit-Regular"; /* Updated to use the correct font-family */
+        color: var(--Stone-600);
+        padding-top: 10px;
+        padding-bottom: 20px;
+      }
+
+
+      
+      .recipe-image {
+        max-width: 100%; /* Ensure the image is responsive */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 8px; /* Match border radius of the container */
+      }
+      
+      .preparation {
+        padding: 20px;
+        background-color: var(--Rose-50);
+        width: 100%;
+      }
+      
+      
+      .preparation > h2 {
+        padding-bottom: 10px;
+        font-family: "Outfit-SemiBold"; /* Updated font-family to use semi-bold weight */
+        color: var(--Rose-800);
+      }
+      
+      .preparation > ul > li {
+        font-family: "Outfit-Regular"; /* Updated font-family to use the regular weight */
+        color: var(--Stone-600); /* Updated color to use the correct variable */
+        line-height: 30px;
+      }
+      
+      .ingredients {
+        padding: 10px; /* Added padding for better spacing */
+        background-color: var(--White); /* Set background color */
+        /*border: 1px solid var(--Stone-600);*/ /* Added border for definition */
+        border-radius: 4px; /* Added border radius for a softer look */
+        width: 100%; /* Ensure ingredients section is responsive */
+      }
+
+      .ingredients > h2 {
+        font-family: "YoungSerif";
+        font-weight: 400;
+        color: var(--Brown-800);
+        padding-bottom: 10px;
+      }
+
+      .ingredients > ul {
+        font-family: "Outfit-Regular"; /* Updated to use the correct font-family */
+        color: var(--Stone-600);
+        
+      }
+
+      .instructions{  
+        padding: 10px; /* Add padding for better spacing */
+        width: 100%; /* Ensure instructions section is responsive */
+      }
+
+      .instructions > h2 {
+        
+        font-family: "YoungSerif";
+        font-weight: 400;
+        color: var(--Brown-800); /* Set color for the heading */
+        padding-bottom: 10px; /* Add bottom padding for spacing */
+      }
+
+      .instructions > ol li::marker {
+        
+        list-style-type: decimal; /* Add numbering to the list */
+        line-height: 30px;
+        font-family: "Outfit-SemiBold"; /* Updated to the correct font-family */
+        color: var(--Brown-800);
+      }
+      .instructions > ol > li {
+        font-family: "Outfit-Regular";
+        color: var(--Stone-600); /* Added color for better readability */
+        line-height: 30px; /* Ensured consistent line-height for better readability */
+      }
+
+      .nutrition{
+        
+        padding: 10px; /* Added padding for better spacing */
+        background-color: var(--White); /* Set background color for the nutrition section */
+        border-radius: 4px; /* Added border radius for a softer look */
+        width: 100%; /* Ensure nutrition section is responsive */
+      }
+
+      .nutrition > h2{
+        font-family: "YoungSerif"; /* Added font-family for consistency */
+        font-weight: 400; /* Set font-weight */
+        color: var(--Brown-800); /* Color for the heading */
+        padding-bottom: 10px; /* Add bottom padding for spacing */
+      }
+
+      .nutrition > p {
+        
+        font-family: "Outfit-Regular"; /* Updated to use the correct font-family */
+        color: var(--Stone-600); /* Set color to match the design */
+        line-height: 1.5; /* Ensure readability with proper line height */
+        padding: 10px 0; /* Add padding for better spacing */
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse; /* Ensures borders don't double */
+    }
+    
+    th, td {
+      font-family: "Outfit-Regular"; /* Updated to use the correct font-family */
+      text-decoration: none;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th{
+      font-weight: normal;
+      color: var(--Stone-600);
+    }
+    td{
+      font-weight: bold;
+      color: var(--Brown-800); /* Ensure color consistency for table data */
+    }
+    
+    tr {
+        border-bottom: 1px solid var(--Stone-150); /* Horizontal line */
+    }
+    
+    /* Remove border from the last row to avoid an extra line */
+    tr:last-child {
+        border-bottom: none;
+    }
+    
+
+
+      @media screen and (max-width: 375px) {
+        /* Corrected the media query for responsive design */
+
+        body {
+          padding: 0;
+        }
+        .container {
+          width: 100%; /* Make container responsive on smaller screens */
+          padding: 0%;
+          border-radius: 0%;
+        }
+        .small-screen-padding {
+          padding: 10px; /* Add padding for better layout on small screens */
+        }
+        .recipe-image {
+          border-radius: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        class="recipe-image"
+        src="./assets/images/image-omelette.jpeg"
+        alt="omelette image"
+      />
+
+      <div class="small-screen-padding">
+      <h1 class="recipe-name">Simple Omelette Recipe</h1>
+      <p>
+        An easy and quick dish, perfect for any meal. This classic omelette
+        combines beaten eggs cooked to perfection, optionally filled with your
+        choice of cheese, vegetables, or meats.
+      </p>
+
+      <div class="preparation">
+        <h2>Preparation time</h2>
+        <ul>
+          <li><strong>Total: </strong> Approximately 10 minutes</li>
+          <li><strong>Preparation:</strong> 5 minutes</li>
+          <li><strong>Cooking:</strong> 5 minutes</li>
+        </ul>
+      </div>
+
+      <div class="ingredients">
+        <h2>Ingredients</h2>
+
+        <ul>
+          <li>2-3 large eggs</li>
+          <li>Salt, to taste</li>
+          <li>Pepper, to taste</li>
+          <li>1 tablespoon of butter or oil</li>
+          <li>
+            Optional fillings: cheese, diced vegetables, cooked meats, herbs
+          </li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <div class="instructions">
+        <h2>Instructions</h2>
+
+        <ol>
+          <li>
+            <strong>Beat the eggs:</strong> In a bowl, beat the eggs with a pinch of salt and
+            pepper until they are well mixed. You can add a tablespoon of water
+            or milk for a fluffier texture.
+          </li>
+
+          <li>
+            <strong>Heat the pan:</strong> Place a non-stick frying pan over medium heat and add
+            butter or oil.
+          </li>
+
+          <li>
+            <strong>Cook the omelette:</strong> Once the butter is melted and bubbling, pour in
+            the eggs. Tilt the pan to ensure the eggs evenly coat the surface.
+          </li>
+
+          <li>
+            <strong>Add fillings (optional):</strong> When the eggs begin to set at the edges but
+            are still slightly runny in the middle, sprinkle your chosen
+            fillings over one half of the omelette.
+          </li>
+
+          <li>
+            <strong>Fold and serve:</strong> As the omelette continues to cook, carefully lift
+            one edge and fold it over the fillings. Let it cook for another
+            minute, then slide it onto a plate.
+          </li>
+
+          <li> 
+            <strong>Enjoy:</strong> Serve hot, with additional salt and pepper if needed.
+          </li>
+        </ol>
+      </div>
+
+      <hr />
+
+      <div class="nutrition">
+        <h2>Nutritional Information</h2>
+        <p>The table below shows nutritional value per serving without the additional fillings.</p>
+        <table>
+          <tr>
+            <th>Calories</th>
+            <td>277kcal</td>
+          </tr>
+          <tr>
+            <th>Carbs</th>
+            <td>0g</td>
+          </tr>
+          <tr>
+            <th>Protein</th>
+            <td>20g</td>
+          </tr>
+          <tr>
+            <th>Fat</th>
+            <td>22g</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
